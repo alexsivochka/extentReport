@@ -21,7 +21,7 @@ public class ChromeDriverProvider implements WebDriverProvider {
 
     @Override
     public WebDriver createDriver(Capabilities capabilities) {
-        WebDriverManager.chromedriver().driverVersion("119.0").setup();
+        WebDriverManager.chromedriver().driverVersion("84.0").setup();
         HashMap<String, Object> chromePrefs = new HashMap<>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
         chromePrefs.put("download.default_directory", System.getProperty("user.dir"));
