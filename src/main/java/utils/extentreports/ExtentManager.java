@@ -25,8 +25,8 @@ public class ExtentManager {
 //        extentReports.setSystemInfo("BROWSER VERSION",System.getProperty("driver.version"));
 
         reporter.config().setReportName("Sample Extent Report");
-//        reporter.config().setEncoding("ANSI");
-        reporter.config().setEncoding("utf-8");
+        reporter.config().setEncoding("ANSI");
+//        reporter.config().setEncoding("utf-8");
         reporter.config().setTheme(Theme.DARK);
 //        reporter.filter().statusFilter().as(new Status[]{Status.FAIL, Status.PASS}).apply();
         extentReports.attachReporter(reporter);
