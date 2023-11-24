@@ -79,7 +79,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>
