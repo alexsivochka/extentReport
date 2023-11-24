@@ -1,5 +1,7 @@
 package utils.listeners;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.OutputType;
@@ -7,6 +9,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.extentreports.ExtentManager;
+import utils.extentreports.ExtentTestManager;
 import utils.logs.Log;
 
 import static utils.extentreports.ExtentTestManager.getTest;
@@ -26,7 +29,7 @@ public class TestListener implements ITestListener {
     public void onFinish(ITestContext iTestContext) {
         Log.info("I am in onFinish method " + iTestContext.getName());
         //Do tier down operations for ExtentReports reporting!
-        ExtentManager.extentReports.flush();
+
     }
 
     @Override
@@ -54,11 +57,11 @@ public class TestListener implements ITestListener {
                 getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
     }
 
+
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
         Log.info(getTestMethodName(iTestResult) + " test is skipped. Retry start");
-//            ExtentReports log operation for skipped tests.
-        getTest().log(Status.SKIP, "Test Skipped");
+        ExtentManager.extentReports.removeTest(getTest());
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import utils.extentreports.ExtentManager;
 
 import java.lang.reflect.Method;
 
@@ -25,6 +26,8 @@ public class BaseTest {
 
     @AfterSuite(alwaysRun = true)
     void closeBrowser() {
+        ExtentManager.createReportEnv();
+        ExtentManager.extentReports.flush();
         if (WebDriverRunner.hasWebDriverStarted()) {
             WebDriverRunner.closeWebDriver();
         }

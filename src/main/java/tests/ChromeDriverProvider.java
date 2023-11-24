@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.HashMap;
 
@@ -30,8 +31,10 @@ public class ChromeDriverProvider implements WebDriverProvider {
         options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
         ChromeDriver driver = new ChromeDriver(options);
 
-//        System.setProperty("browser", options.getBrowserName() + " " + driver.getCapabilities().getBrowserName());
-//        System.setProperty("driver.version", WebDriverManager.chromedriver().getDownloadedDriverVersion());
+        System.setProperty("browser", driver.getCapabilities().getBrowserName());
+        System.setProperty("driver.version", driver.getCapabilities().getBrowserVersion());
+        System.out.println(System.getProperty("browser"));
+        System.out.println(System.getProperty("driver.version"));
 
         return driver;
 
